@@ -1704,76 +1704,76 @@ func (a *V2ApiService) CreatePublicIpInstance(createPublicIpInstanceRequest *Cre
 // }
 
 /*
-V2ApiService
-createServerImageFromSnapshot
-@param createServerImageFromSnapshotRequest createServerImageFromSnapshotRequest
-@return
-*/
-func (a *V2ApiService) CreateServerImageFromSnapshot(createServerImageFromSnapshotRequest *CreateServerImageFromSnapshotRequest) error {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-	)
+// V2ApiService
+// createServerImageFromSnapshot
+// @param createServerImageFromSnapshotRequest createServerImageFromSnapshotRequest
+// @return
+// */
+// func (a *V2ApiService) CreateServerImageFromSnapshot(createServerImageFromSnapshotRequest *CreateServerImageFromSnapshotRequest) error {
+// 	var (
+// 		localVarHttpMethod = strings.ToUpper("Post")
+// 		localVarPostBody   interface{}
+// 		localVarFileName   string
+// 		localVarFileBytes  []byte
+// 	)
 
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/createServerImageFromSnapshot"
+// 	// create path and map variables
+// 	localVarPath := a.client.cfg.BasePath + "/createServerImageFromSnapshot"
 
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+// 	localVarHeaderParams := make(map[string]string)
+// 	localVarQueryParams := url.Values{}
+// 	localVarFormParams := url.Values{}
 
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+// 	// to determine the Content-Type header
+// 	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
 
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
+// 	// set Content-Type header
+// 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+// 	if localVarHttpContentType != "" {
+// 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+// 	}
 
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
+// 	// to determine the Accept header
+// 	localVarHttpHeaderAccepts := []string{}
 
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = createServerImageFromSnapshotRequest
-	v := reflect.ValueOf(localVarPostBody).Elem().FieldByName("UserData")
-	if v.IsValid() && v.CanAddr() {
-		ptr := v.Addr().Interface().(**string)
-		if *ptr != nil {
-			**ptr = base64.StdEncoding.EncodeToString([]byte(**ptr))
-		}
-	}
-	r, err := a.client.prepareRequest(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return err
-	}
+// 	// set Accept header
+// 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+// 	if localVarHttpHeaderAccept != "" {
+// 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+// 	}
+// 	// body params
+// 	localVarPostBody = createServerImageFromSnapshotRequest
+// 	v := reflect.ValueOf(localVarPostBody).Elem().FieldByName("UserData")
+// 	if v.IsValid() && v.CanAddr() {
+// 		ptr := v.Addr().Interface().(**string)
+// 		if *ptr != nil {
+// 			**ptr = base64.StdEncoding.EncodeToString([]byte(**ptr))
+// 		}
+// 	}
+// 	r, err := a.client.prepareRequest(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return err
-	}
-	defer localVarHttpResponse.Body.Close()
-	bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+// 	localVarHttpResponse, err := a.client.callAPI(r)
+// 	if err != nil || localVarHttpResponse == nil {
+// 		return err
+// 	}
+// 	defer localVarHttpResponse.Body.Close()
+// 	bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 
-	if localVarHttpResponse.StatusCode >= 300 || (localVarHttpResponse.StatusCode < 300 && !strings.HasPrefix(string(bodyBytes), `{`)) {
-		return reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
+// 	if localVarHttpResponse.StatusCode >= 300 || (localVarHttpResponse.StatusCode < 300 && !strings.HasPrefix(string(bodyBytes), `{`)) {
+// 		return reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+// 	}
 
-	if !strings.Contains(string(bodyBytes), `{"error"`) && strings.HasPrefix(string(bodyBytes), `{`) {
-		if err = json.Unmarshal(bodyBytes[bytes.IndexAny(bytes.Trim(bodyBytes, "{"), "{"):len(bodyBytes)-1], &successPayload); err != nil {
-			return err
-		}
-	}
+// 	if !strings.Contains(string(bodyBytes), `{"error"`) && strings.HasPrefix(string(bodyBytes), `{`) {
+// 		if err = json.Unmarshal(bodyBytes[bytes.IndexAny(bytes.Trim(bodyBytes, "{"), "{"):len(bodyBytes)-1], &successPayload); err != nil {
+// 			return err
+// 		}
+// 	}
 
-	return err
-}
+// 	return err
+// }
 
 /*
 V2ApiService
@@ -4918,71 +4918,71 @@ V2ApiService
 @param getServerImageListRequest
 @return
 */
-func (a *V2ApiService) GetServerImageList(getServerImageListRequest *GetServerImageListRequest) error {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-	)
+// func (a *V2ApiService) GetServerImageList(getServerImageListRequest *GetServerImageListRequest) error {
+// 	var (
+// 		localVarHttpMethod = strings.ToUpper("Post")
+// 		localVarPostBody   interface{}
+// 		localVarFileName   string
+// 		localVarFileBytes  []byte
+// 	)
 
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/getServerImageList"
+// 	// create path and map variables
+// 	localVarPath := a.client.cfg.BasePath + "/getServerImageList"
 
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+// 	localVarHeaderParams := make(map[string]string)
+// 	localVarQueryParams := url.Values{}
+// 	localVarFormParams := url.Values{}
 
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
+// 	// to determine the Content-Type header
+// 	localVarHttpContentTypes := []string{"application/x-www-form-urlencoded"}
 
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
+// 	// set Content-Type header
+// 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+// 	if localVarHttpContentType != "" {
+// 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+// 	}
 
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
+// 	// to determine the Accept header
+// 	localVarHttpHeaderAccepts := []string{}
 
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = getServerImageListRequest
-	v := reflect.ValueOf(localVarPostBody).Elem().FieldByName("UserData")
-	if v.IsValid() && v.CanAddr() {
-		ptr := v.Addr().Interface().(**string)
-		if *ptr != nil {
-			**ptr = base64.StdEncoding.EncodeToString([]byte(**ptr))
-		}
-	}
-	r, err := a.client.prepareRequest(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return err
-	}
+// 	// set Accept header
+// 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+// 	if localVarHttpHeaderAccept != "" {
+// 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+// 	}
+// 	// body params
+// 	localVarPostBody = getServerImageListRequest
+// 	v := reflect.ValueOf(localVarPostBody).Elem().FieldByName("UserData")
+// 	if v.IsValid() && v.CanAddr() {
+// 		ptr := v.Addr().Interface().(**string)
+// 		if *ptr != nil {
+// 			**ptr = base64.StdEncoding.EncodeToString([]byte(**ptr))
+// 		}
+// 	}
+// 	r, err := a.client.prepareRequest(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return err
-	}
-	defer localVarHttpResponse.Body.Close()
-	bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
+// 	localVarHttpResponse, err := a.client.callAPI(r)
+// 	if err != nil || localVarHttpResponse == nil {
+// 		return err
+// 	}
+// 	defer localVarHttpResponse.Body.Close()
+// 	bodyBytes, _ := ioutil.ReadAll(localVarHttpResponse.Body)
 
-	if localVarHttpResponse.StatusCode >= 300 || (localVarHttpResponse.StatusCode < 300 && !strings.HasPrefix(string(bodyBytes), `{`)) {
-		return reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
-	}
+// 	if localVarHttpResponse.StatusCode >= 300 || (localVarHttpResponse.StatusCode < 300 && !strings.HasPrefix(string(bodyBytes), `{`)) {
+// 		return reportError("Status: %v, Body: %s", localVarHttpResponse.Status, bodyBytes)
+// 	}
 
-	if !strings.Contains(string(bodyBytes), `{"error"`) && strings.HasPrefix(string(bodyBytes), `{`) {
-		if err = json.Unmarshal(bodyBytes[bytes.IndexAny(bytes.Trim(bodyBytes, "{"), "{"):len(bodyBytes)-1], &successPayload); err != nil {
-			return err
-		}
-	}
+// 	if !strings.Contains(string(bodyBytes), `{"error"`) && strings.HasPrefix(string(bodyBytes), `{`) {
+// 		if err = json.Unmarshal(bodyBytes[bytes.IndexAny(bytes.Trim(bodyBytes, "{"), "{"):len(bodyBytes)-1], &successPayload); err != nil {
+// 			return err
+// 		}
+// 	}
 
-	return err
-}
+// 	return err
+// }
 
 /*
 V2ApiService
